@@ -1,5 +1,10 @@
+import SearchBar from "../components/SearchBar";
+
 export default function PostPage() {
     return (
-        <div></div>
+        <div>
+            <SearchBar />
+
+        </div>
     )
 }
