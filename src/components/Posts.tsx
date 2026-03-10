@@ -1,14 +1,15 @@
-import { usePostsGet } from "../hooks/GetPostHook";
+import type { PostResponse } from "../type/PostResponse";
 
-export default function Posts() {
+interface PostsProps {
+    data: PostResponse
+    setSearch: React.Dispatch<React.SetStateAction<any>>
+}
 
-    const { data } = usePostsGet()
-
-
-    if (!data) return null
+export default function Posts({ data, setSearch }: PostsProps) {
 
     return (
         <div>
+
             {data?.posts?.map(post => (
                 <div key={post.id}>
                     <div>제목: {post.title}</div>
@@ -17,14 +18,31 @@ export default function Posts() {
                     <div>작성일: {post.createdAt}</div>
                 </div>
             ))}
-            <div>
-                <div>현재 페이지: {data?.page}</div>
-                <div>총 페이지: {data?.total}</div>
-                <div>마지막 페이지: {data?.lastPage}</div>
 
+            <div>
+
+                {Array.from({ length: data.lastPage }).map((_, index) => {
+
+                    const page = index + 1
+
+                    return (
+                        <button
+                            key={page}
+                            onClick={() =>
+                                setSearch((prev: any) => ({
+                                    ...prev,
+                                    page
+                                }))
+                            }
+                        >
+                            {page}
+                        </button>
+                    )
+                })}
 
             </div>
 
         </div>
+
     )
 }

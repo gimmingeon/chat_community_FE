@@ -1,14 +1,18 @@
-import { useState } from "react"
+interface Props {
+    inputKeyword: string
+    setInputKeyword: (keyword: string) => void
+    setSearch: React.Dispatch<React.SetStateAction<any>>
+}
 
-export default function SearchBar() {
-
-    //useState로 키워드 저장하기
-    const [keyword, setKeyword] = useState("")
+export default function SearchBar({ inputKeyword, setInputKeyword, setSearch }: Props) {
 
     const handleSearch = () => {
 
-        console.log("검색어 : ", keyword)
-
+        setSearch((prev: any) => ({
+            ...prev,
+            keyword: inputKeyword,
+            page: 1
+        }))
     }
 
     return (
@@ -19,9 +23,9 @@ export default function SearchBar() {
                 // 검색창에 들어갈 설명내용
                 placeholder="검색어 입력"
                 // 들어가는 값 여기서는 keyword state
-                value={keyword}
+                value={inputKeyword}
                 // setKeyword로 키워드를 교체함
-                onChange={(e) => setKeyword(e.target.value)}
+                onChange={(e) => setInputKeyword(e.target.value)}
                 //enter 누르면 입력
                 onKeyDown={(e) => {
                     if (e.key === "Enter") {
@@ -30,7 +34,7 @@ export default function SearchBar() {
                 }}
             />
 
-            <button onClick={handleSearch}>검색</button>
+            <button onClick={() => handleSearch}>검색</button>
         </div>
     )
 }
