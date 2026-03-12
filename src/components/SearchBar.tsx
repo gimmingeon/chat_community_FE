@@ -37,7 +37,7 @@ export default function SearchBar({ inputKeyword, setInputKeyword, setSearch }: 
                 }}
             />
 
-            <button className="searchBar-button" onClick={() => handleSearch}>검색</button>
+            <button className="searchBar-button" onClick={handleSearch}>검색</button>
         </div>
     )
 }

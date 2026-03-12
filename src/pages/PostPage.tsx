@@ -4,6 +4,7 @@ import { usePostsGet } from "../hooks/usePostGet";
 import TypeButton from "../components/TypeButton";
 import SearchBar from "../components/SearchBar";
 import "../css/MainPost.css"
+import Pagenation from "../components/Pagenation";
 
 export default function PostPage() {
 
@@ -27,6 +28,7 @@ export default function PostPage() {
                 setSearch={setSearch}
             />
             <Posts data={data} setSearch={setSearch} />
+            <Pagenation data={data} setSearch={setSearch} />
         </div>
     )
 }

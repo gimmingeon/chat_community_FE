@@ -11,6 +11,7 @@
     background: white;
     cursor: pointer;
     border-radius: 4px;
+    margin-top: 20px;
 }
 
 .page-button:hover {

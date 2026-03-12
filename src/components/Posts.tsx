@@ -24,30 +24,6 @@ export default function Posts({ data, setSearch }: PostsProps) {
                 </div>
             ))}
 
-            <div className="pagenation">
-
-                {Array.from({ length: data.lastPage }).map((_, index) => {
-
-                    const page = index + 1
-
-                    return (
-                        <button
-                            className="page-button"
-                            key={page}
-                            onClick={() =>
-                                setSearch((prev: any) => ({
-                                    ...prev,
-                                    page
-                                }))
-                            }
-                        >
-                            {page}
-                        </button>
-                    )
-                })}
-
-            </div>
-
         </div>
 
     )
