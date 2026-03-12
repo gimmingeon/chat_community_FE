@@ -1,4 +1,7 @@
 import type { PostResponse } from "../type/PostResponse";
+import "../css/Posts.css"
+import "../css/Pagenation.css"
+import { PostTypeLabel } from "../type/PostTypeLabel";
 
 interface PostsProps {
     data: PostResponse
@@ -8,18 +11,20 @@ interface PostsProps {
 export default function Posts({ data, setSearch }: PostsProps) {
 
     return (
-        <div>
+        <div className="posts-container">
 
             {data?.posts?.map(post => (
-                <div key={post.id}>
-                    <div>제목: {post.title}</div>
-                    <div>{post.postType}</div>
-                    <div>닉네임: {post.user.nickname}</div>
-                    <div>작성일: {post.createdAt}</div>
+                <div className="post-card" key={post.id}>
+                    <div className="post-title">제목: {post.title}</div>
+                    <div className="post-info">
+                        <span className="post-type">{PostTypeLabel[post.postType]}</span>
+                        <span>닉네임: {post.user.nickname}</span>
+                        <span>작성일: {post.createdAt}</span>
+                    </div>
                 </div>
             ))}
 
-            <div>
+            <div className="pagenation">
 
                 {Array.from({ length: data.lastPage }).map((_, index) => {
 
@@ -27,6 +32,7 @@ export default function Posts({ data, setSearch }: PostsProps) {
 
                     return (
                         <button
+                            className="page-button"
                             key={page}
                             onClick={() =>
                                 setSearch((prev: any) => ({

@@ -1,0 +1,20 @@
+.type-button-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.type-button {
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    background: white;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.type-button:hover {
+    background: #f3f3f3;
+    border-color: #aaa;
+}

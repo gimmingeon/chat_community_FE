@@ -1,4 +1,4 @@
-import type { Post } from "./PostType";
+import type { Post } from "./AllPostType";
 
 export interface PostResponse {
     posts: Post[],

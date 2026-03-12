@@ -1,0 +1,35 @@
+.posts-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.post-card {
+    padding: 16px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    background: white;
+    transition: box-shadow 0.2s;
+}
+
+.post-card:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.post-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.post-info {
+    font-size: 13px;
+    color: #666;
+    display: flex;
+    gap: 15px;
+}
+
+.post-type {
+    font-weight: bold;
+    color: #0077ff;
+}

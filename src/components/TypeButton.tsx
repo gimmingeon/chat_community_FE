@@ -1,3 +1,5 @@
+import "../css/TypeButton.css"
+
 interface Props {
     setSearch: React.Dispatch<React.SetStateAction<any>>
 }
@@ -5,6 +7,7 @@ interface Props {
 export default function TypeButton({ setSearch }: Props) {
 
     const postType = [
+        { label: "전체", value: "all" },
         { label: "자유", value: "nomal" },
         { label: "질문", value: "question" },
         { label: "프로젝트", value: "project" },
@@ -13,9 +16,10 @@ export default function TypeButton({ setSearch }: Props) {
 
     return (
         <div>
-            <div>
+            <div className="type-button-container">
                 {postType.map((type) => (
                     <button
+                        className="type-button"
                         onClick={() => {
                             setSearch((prev: any) => ({
                                 ...prev,

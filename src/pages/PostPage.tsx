@@ -3,6 +3,7 @@ import Posts from "../components/Posts";
 import { usePostsGet } from "../hooks/usePostGet";
 import TypeButton from "../components/TypeButton";
 import SearchBar from "../components/SearchBar";
+import "../css/MainPost.css"
 
 export default function PostPage() {
 
@@ -18,7 +19,7 @@ export default function PostPage() {
     if (!data) return null
 
     return (
-        <div>
+        <div className="post-page">
             <TypeButton setSearch={setSearch} />
             <SearchBar
                 inputKeyword={inputKeyword}
