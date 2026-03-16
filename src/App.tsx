@@ -1,6 +1,7 @@
 import { Route, Routes, Link, Router } from "react-router-dom"
 import PostPage from "./pages/PostPage"
 import HeaderBar from "./components/HeaderBar"
+import LoginPage from "./pages/LoginPage"
 
 function App() {
 
@@ -11,7 +12,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<PostPage />} />
-        <Route path="/signup" element={<div>로그인</div>} />
+        <Route path="/signin" element={<LoginPage />} />
       </Routes>
     </div>
   )

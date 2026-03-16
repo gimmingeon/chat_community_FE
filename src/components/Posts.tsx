@@ -8,7 +8,7 @@ interface PostsProps {
     setSearch: React.Dispatch<React.SetStateAction<any>>
 }
 
-export default function Posts({ data, setSearch }: PostsProps) {
+export default function Posts({ data }: PostsProps) {
 
     return (
         <div className="posts-container">
