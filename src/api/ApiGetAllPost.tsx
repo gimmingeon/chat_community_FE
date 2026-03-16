@@ -1,9 +1,12 @@
 import axios from "axios"
 import type { PostResponse } from "../type/PostResponse";
+import { api } from "./axios";
 
-export const getAllPost = async (search: { keyword: string; type: string; page: number }): Promise<PostResponse> => {
+export const getAllPost = async (
+    search: { keyword: string; type: string; page: number })
+    : Promise<PostResponse> => {
 
-    const res = await axios.get("http://localhost:3000/post", {
+    const res = await api.get("/post", {
         params: search
     });
 

@@ -16,7 +16,7 @@ export default function HeaderBar() {
                     </Nav>
 
                     <Nav>
-                        <Nav.Link href="/signin">마이페이지/로그인</Nav.Link>
+                        <Nav.Link href="/login">마이페이지/로그인</Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>

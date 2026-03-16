@@ -1,24 +1,26 @@
 import { useState } from "react"
 import LoginBar from "../components/LoginBar"
+import { useLoginPost } from "../hooks/useLogin"
 
 export default function LoginPage() {
 
-    const [loginText, setLoginText] = useState({
-        id: "",
+    const [inputLoginText, setInputLoginText] = useState({
+        email: "",
         password: ""
     })
 
-    const [inputLoginText, setInputLoginText] = useState({
-        id: "",
-        password: ""
-    })
+    const loginMutation = useLoginPost()
+
+    const handleLogin = () => {
+        loginMutation.mutate(inputLoginText)
+    }
 
     return (
         <div>
             <LoginBar
                 inputLoginText={inputLoginText}
                 setInputLoginText={setInputLoginText}
-                setLoginText={setLoginText}
+                handleLogin={handleLogin}
             />
         </div>
     )

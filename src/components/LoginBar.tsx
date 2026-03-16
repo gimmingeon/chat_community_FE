@@ -1,34 +1,25 @@
 interface LoginBarProps {
-    inputLoginText: { id: string, password: string }
+    inputLoginText: { email: string, password: string }
     setInputLoginText: React.Dispatch<React.SetStateAction<any>>
-    setLoginText: React.Dispatch<React.SetStateAction<any>>
+    handleLogin: () => void
 }
 
 export default function LoginBar({
     inputLoginText,
     setInputLoginText,
-    setLoginText
-
+    handleLogin
 }: LoginBarProps) {
-
-    const handleInputLogin = () => {
-        setLoginText((prev: any) => ({
-            ...prev,
-            id: inputLoginText.id,
-            password: inputLoginText.password
-        }))
-    }
 
     return (
         <div>
             <input
-                type="email"
+                type="text"
                 placeholder="이메일"
-                value={inputLoginText.id}
+                value={inputLoginText.email}
                 onChange={(e) =>
                     setInputLoginText((prev: any) => ({
                         ...prev,
-                        id: e.target.value
+                        email: e.target.value
                     }))
                 }
             />
@@ -44,7 +35,7 @@ export default function LoginBar({
                     }))
                 }
             />
-            <button onClick={handleInputLogin}>로그인</button>
+            <button onClick={handleLogin}>로그인</button>
         </div>
     )
 }
