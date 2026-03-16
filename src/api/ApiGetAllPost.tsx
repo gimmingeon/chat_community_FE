@@ -1,4 +1,3 @@
-import axios from "axios"
 import type { PostResponse } from "../type/PostResponse";
 import { api } from "./axios";
 

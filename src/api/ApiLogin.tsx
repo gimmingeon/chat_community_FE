@@ -1,4 +1,3 @@
-import axios from "axios";
 import type { LoginType } from "../type/loginType";
 import { api } from "./axios";
 
