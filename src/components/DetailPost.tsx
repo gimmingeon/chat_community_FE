@@ -24,6 +24,7 @@ export default function DetailPost({ data }: DetailPostProps) {
                         <span>수정일: {dayjs(data.updatedAt).format("YYYY-MM-DD HH:mm")}</span>
                     )}
                 </div>
+                <hr />
 
                 <div className="detail-post-content">
                     {data.content}
