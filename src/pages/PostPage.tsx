@@ -27,7 +27,7 @@ export default function PostPage() {
                 setInputKeyword={setInputKeyword}
                 setSearch={setSearch}
             />
-            <Posts data={data} setSearch={setSearch} />
+            <Posts data={data} />
             <Pagenation data={data} setSearch={setSearch} />
         </div>
     )

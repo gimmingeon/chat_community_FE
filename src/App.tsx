@@ -2,6 +2,8 @@ import { Route, Routes } from "react-router-dom"
 import PostPage from "./pages/PostPage"
 import HeaderBar from "./components/HeaderBar"
 import LoginPage from "./pages/LoginPage"
+import DetailPost from "./components/DetailPost"
+import DetailPostPage from "./pages/DetailPostPage"
 
 function App() {
 
@@ -13,6 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<PostPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/post/:id" element={<DetailPostPage />} />
       </Routes>
     </div>
   )
