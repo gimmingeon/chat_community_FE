@@ -4,6 +4,6 @@ export interface Post {
     id: number,
     title: string,
     postType: PostType,
-    createdAt: String,
+    createdAt: Date,
     user: { nickname: string }
 }

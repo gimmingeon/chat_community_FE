@@ -1,11 +1,15 @@
+.header-navbar {
+    background-color: #4f46e5;
+}
+
 .header-navbar .nav-link {
     color: white;
 }
 
 .header-navbar .navbar-brand:hover {
-    color: #4fc3e3;
+    color: #c7d2fe;
 }
 
 .header-navbar .nav-link:hover {
-    color: #61dafb;
+    color: #c7d2fe;
 }

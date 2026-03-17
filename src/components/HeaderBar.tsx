@@ -6,7 +6,7 @@ export default function HeaderBar() {
 
     return (
         <header className="header-navbar">
-            <Navbar bg="success" data-bs-theme="dark">
+            <Navbar data-bs-theme="dark">
                 <Container>
                     <Navbar.Brand href="/">개발자모아</Navbar.Brand>
                     <Nav className="me-auto">

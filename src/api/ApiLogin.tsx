@@ -1,4 +1,4 @@
-import type { LoginType } from "../type/loginType";
+import type { LoginType } from "../type/LoginType";
 import { api } from "./axios";
 
 export const loginApi = async (

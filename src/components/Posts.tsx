@@ -2,6 +2,7 @@ import type { PostResponse } from "../type/PostResponse";
 import "../css/Posts.css"
 import "../css/Pagenation.css"
 import { PostTypeLabel } from "../type/PostTypeLabel";
+import dayjs from "dayjs";
 
 interface PostsProps {
     data: PostResponse
@@ -19,7 +20,7 @@ export default function Posts({ data }: PostsProps) {
                     <div className="post-info">
                         <span className="post-type">{PostTypeLabel[post.postType]}</span>
                         <span>닉네임: {post.user.nickname}</span>
-                        <span>작성일: {post.createdAt}</span>
+                        <span>작성일: {dayjs(post.createdAt).format("YYYY-MM-DD HH:mm")}</span>
                     </div>
                 </div>
             ))}
