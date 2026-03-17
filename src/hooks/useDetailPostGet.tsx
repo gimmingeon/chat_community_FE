@@ -4,7 +4,7 @@ import { getDetailPost } from "../api/ApiGetDetailPost"
 export const useDetailPostGet =
     (id: string) => {
         return useQuery({
-            queryKey: ["detailPosts", id],
+            queryKey: ["detailPost", id],
             queryFn: () => getDetailPost(id)
         })
     }

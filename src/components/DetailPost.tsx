@@ -1,6 +1,7 @@
 import dayjs from "dayjs"
 import type { DetailPost } from "../type/DetailPostType"
 import "../css/DetailPost.css"
+import { PostTypeLabel } from "../type/PostTypeLabel"
 
 interface DetailPostProps {
     data: DetailPost
@@ -17,9 +18,11 @@ export default function DetailPost({ data }: DetailPostProps) {
 
                 <div className="detail-post-meta">
                     <span>닉네임: {data.user.nickname}</span>
-                    <span>타입: {data.postType}</span>
+                    <span>타입: {PostTypeLabel[data.postType]}</span>
                     <span>작성일: {dayjs(data.createdAt).format("YYYY-MM-DD HH:mm")}</span>
-                    <span>수정일: {dayjs(data.updatedAt).format("YYYY-MM-DD HH:mm")}</span>
+                    {data.updatedAt !== data.createdAt && (
+                        <span>수정일: {dayjs(data.updatedAt).format("YYYY-MM-DD HH:mm")}</span>
+                    )}
                 </div>
 
                 <div className="detail-post-content">
@@ -27,9 +30,9 @@ export default function DetailPost({ data }: DetailPostProps) {
                 </div>
 
                 <div>
-                    {data?.postHashtag?.map((hashtag, index) => (
+                    {data.postHashtag?.map((hashtag, index) => (
                         <span className="post-tag" key={index}>
-                            <span>  </span>#{hashtag.hashtag}
+                            <span>#{hashtag.hashtag}  </span>
                         </span>
                     ))}
                 </div>

@@ -4,7 +4,7 @@ export interface DetailPost {
     id: number,
     title: string,
     content: string,
-    postType: string,
+    postType: "nomal" | "question" | "project" | "tip",
     createdAt: Date,
     updatedAt: Date,
     postHashtag: PostHashtag[],
