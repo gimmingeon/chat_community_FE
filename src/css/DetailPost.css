@@ -2,13 +2,10 @@
     display: flex;
     justify-content: center;
     padding: 20px;
-    background-color: #f5f6f8;
-    min-height: 100vh;
 }
 
 .detail-post-card {
     width: 800px;
-    background-color: white;
     border-radius: 16px;
     padding: 30px;
 
