@@ -33,6 +33,8 @@ export default function TypeButton({ setSearch }: Props) {
                         {type.label}
                     </button>
                 ))}
+
+                <button className="register-post-button">게시글 등록</button>
             </div>
         </div>
     )

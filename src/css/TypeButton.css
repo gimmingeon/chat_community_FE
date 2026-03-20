@@ -18,3 +18,16 @@
     background: #f3f3f3;
     border-color: #aaa;
 }
+
+
+.register-post-button {
+    color: white;
+    padding: 8px 16px;
+    border: 1.5px solid black;
+    background: #0077ff;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: all 0.2s;
+    margin-left: auto;
+}
