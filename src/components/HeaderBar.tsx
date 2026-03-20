@@ -29,10 +29,10 @@ export default function HeaderBar() {
                     <Nav>
                         {
                             isLogin ? (
-                                <div>
+                                <Nav>
                                     <Nav.Link href="/my">마이페이지</Nav.Link>
-                                    <Nav onClick={() => logout()}>로그아웃</Nav>
-                                </div>
+                                    <Nav.Link onClick={() => logout()}>로그아웃</Nav.Link>
+                                </Nav>
 
                             ) : (
                                 <Nav.Link href="/login">로그인</Nav.Link>
