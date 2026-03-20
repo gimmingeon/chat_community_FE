@@ -2,7 +2,6 @@ import { Route, Routes } from "react-router-dom"
 import PostPage from "./pages/PostPage"
 import HeaderBar from "./components/HeaderBar"
 import LoginPage from "./pages/LoginPage"
-import DetailPost from "./components/DetailPost"
 import DetailPostPage from "./pages/DetailPostPage"
 
 function App() {

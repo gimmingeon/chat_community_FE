@@ -1,8 +1,19 @@
 import { Container, Nav, Navbar } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../css/Header.css"
+import { useMyInfo } from "../hooks/useMyInfo";
+import { useLogout } from "../hooks/useLogout";
 
 export default function HeaderBar() {
+
+    const { data, isLoading } = useMyInfo();
+
+    const { mutate: logout } = useLogout();
+
+    // !! : 데이터가 있으면 true, 없으면 false
+    const isLogin = !!data;
+
+    if (isLoading) return null;
 
     return (
         <header className="header-navbar">
@@ -16,7 +27,17 @@ export default function HeaderBar() {
                     </Nav>
 
                     <Nav>
-                        <Nav.Link href="/login">마이페이지/로그인</Nav.Link>
+                        {
+                            isLogin ? (
+                                <div>
+                                    <Nav.Link href="/my">마이페이지</Nav.Link>
+                                    <Nav onClick={() => logout()}>로그아웃</Nav>
+                                </div>
+
+                            ) : (
+                                <Nav.Link href="/login">로그인</Nav.Link>
+                            )
+                        }
                     </Nav>
                 </Container>
             </Navbar>
