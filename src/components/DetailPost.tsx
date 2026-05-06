@@ -23,12 +23,17 @@ export default function DetailPost({ data }: DetailPostProps) {
                     {data.updatedAt !== data.createdAt && (
                         <span>수정일: {dayjs(data.updatedAt).format("YYYY-MM-DD HH:mm")}</span>
                     )}
+
+                    <button className="post-update-button">게시글 수정</button>
+                    <button className="post-delete-button">게시글 삭제</button>
                 </div>
                 <hr />
 
                 <div className="detail-post-content">
                     {data.content}
                 </div>
+
+                <hr />
 
                 <div>
                     {data.postHashtag?.map((hashtag, index) => (
@@ -37,6 +42,8 @@ export default function DetailPost({ data }: DetailPostProps) {
                         </span>
                     ))}
                 </div>
+
+                <hr />
 
             </div>
         </div>
