@@ -51,7 +51,7 @@
 .post-update-button {
     color: white;
     padding: 4px 8px;
-    border: 1.5px solid black;
+    border: 1px solid black;
     background: #05a71e;
     cursor: pointer;
     border-radius: 6px;
@@ -63,7 +63,7 @@
 .post-delete-button {
     color: white;
     padding: 4px 8px;
-    border: 1.5px solid black;
+    border: 1px solid black;
     background: red;
     cursor: pointer;
     border-radius: 6px;

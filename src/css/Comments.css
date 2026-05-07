@@ -48,3 +48,27 @@
     line-height: 1.5;
     white-space: pre-line;
 }
+
+.comment-delete-button {
+    color: white;
+    padding: 2px 4px;
+    border: 1px solid black;
+    background: red;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: all 0.2s;
+    margin-left: 20px;
+}
+
+.comment-update-button {
+    color: white;
+    padding: 2px 4px;
+    border: 1px solid black;
+    background: #05a71e;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: all 0.2s;
+    margin-left: 10px;
+}

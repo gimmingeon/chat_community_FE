@@ -35,7 +35,11 @@ export default function HeaderBar() {
                                 </Nav>
 
                             ) : (
-                                <Nav.Link href="/login">로그인</Nav.Link>
+                                <Nav>
+                                    <Nav.Link href="/login">로그인</Nav.Link>
+                                    <Nav.Link href="/signup">회원가입</Nav.Link>
+                                </Nav>
+
                             )
                         }
                     </Nav>
