@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import "../css/TypeButton.css"
 
 interface Props {
@@ -13,6 +14,8 @@ export default function TypeButton({ setSearch }: Props) {
         { label: "프로젝트", value: "project" },
         { label: "팁", value: "tip" }
     ]
+
+    let navigate = useNavigate();
 
     return (
         <div>
@@ -34,7 +37,10 @@ export default function TypeButton({ setSearch }: Props) {
                     </button>
                 ))}
 
-                <button className="register-post-button">게시글 등록</button>
+                <button
+                    className="register-post-button"
+                    onClick={() => navigate("/createpost")}
+                >게시글 등록</button>
             </div>
         </div>
     )

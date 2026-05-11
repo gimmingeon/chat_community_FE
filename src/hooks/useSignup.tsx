@@ -5,8 +5,6 @@ import { signupApi } from "../api/ApiSignUp";
 export const useSignup = () => {
     let navigate = useNavigate();
 
-    const queryClient = useQueryClient();
-
     return useMutation({
         mutationFn: signupApi,
 
@@ -15,7 +13,8 @@ export const useSignup = () => {
 
             // me : 데이터의 키와 같다
             // queryClient.invalidateQueries : me라는 키를 이용해서 me 데이터를 가져온다.
-            queryClient.invalidateQueries({ queryKey: ["me"] });
+            // 그런데 회원가입을 한 후 로그인을 해야 내 데이터가 갱신되니 굳이 여기선 가져올 필요는 없음
+            // queryClient.invalidateQueries({ queryKey: ["me"] });
             navigate("/")
         },
 
