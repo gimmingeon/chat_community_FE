@@ -1,4 +1,5 @@
 import type { CreatePostType } from "../type/CreatePostType";
+import "../css/createPostBox.css"
 
 interface CreatePostProps {
     inputPostText: CreatePostType
@@ -29,8 +30,9 @@ export default function CreatePostBox({
     }
 
     return (
-        <div>
+        <div className="create-post-container">
             <input
+                className="create-post-input"
                 type="text"
                 placeholder="제목"
                 value={inputPostText.title}
@@ -42,8 +44,8 @@ export default function CreatePostBox({
                 }
             />
 
-            <input
-                type="text"
+            <textarea
+                className="create-post-input-content"
                 placeholder="내용"
                 value={inputPostText.content}
                 onChange={(e) =>
@@ -55,6 +57,7 @@ export default function CreatePostBox({
             />
 
             <select
+                className="create-post-select"
                 value={inputPostText.postType}
                 onChange={(e) =>
                     setInputPostText((prev) => ({
@@ -69,25 +72,41 @@ export default function CreatePostBox({
                 <option value="tip">팁</option>
             </select>
 
-            <input
-                value={tagInput}
-                onChange={(e) => setTagInput(e.target.value)}
-            />
+            <div className="create-post-tag-wrapper">
+                <input
+                    className="create-post-tag-input"
+                    value={tagInput}
+                    onChange={(e) => setTagInput(e.target.value)}
+                />
 
-            <button onClick={handleAddTag}>추가</button>
+                <button
+                    className="create-post-add-button"
+                    onClick={handleAddTag}
+                >추가</button>
 
-            {
-                inputPostText.hashTag.map((tag) => (
-                    <div key={tag}>
-                        {tag}
-                        <button onClick={() => handleMinusTag(tag)}>
-                            X
-                        </button>
-                    </div>
-                ))
-            }
+            </div>
 
-            <button onClick={handleCreatePost}>
+            <div className="create-post-tags">
+                {
+                    inputPostText.hashTag.map((tag) => (
+                        <div className="create-post-tag" key={tag}>
+                            {tag}
+                            <button
+                                className="create-post-tag-delete"
+                                onClick={() => handleMinusTag(tag)}
+                            >
+                                X
+                            </button>
+                        </div>
+                    ))
+                }
+            </div>
+
+
+            <button
+                className="create-post-submit-button"
+                onClick={handleCreatePost}
+            >
                 게시글 등록
             </button>
         </div>
