@@ -4,6 +4,7 @@ import { getComments } from "../api/ApiGetComments"
 export const useGetComments = (id: string) => {
     return useQuery({
         queryKey: ["comment", id],
-        queryFn: () => getComments(id)
+        queryFn: () => getComments(id),
+        enabled: !!id
     })
 }

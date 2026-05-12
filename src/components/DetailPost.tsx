@@ -4,10 +4,11 @@ import "../css/DetailPost.css"
 import { PostTypeLabel } from "../type/PostTypeLabel"
 
 interface DetailPostProps {
-    data: DetailPost
+    data: DetailPost,
+    handleDeletePost: () => void
 }
 
-export default function DetailPost({ data }: DetailPostProps) {
+export default function DetailPost({ data, handleDeletePost }: DetailPostProps) {
 
     return (
         <div className="detail-post-container">
@@ -25,7 +26,10 @@ export default function DetailPost({ data }: DetailPostProps) {
                     )}
 
                     <button className="post-update-button">게시글 수정</button>
-                    <button className="post-delete-button">게시글 삭제</button>
+                    <button
+                        className="post-delete-button"
+                        onClick={handleDeletePost}
+                    >게시글 삭제</button>
                 </div>
                 <hr />
 

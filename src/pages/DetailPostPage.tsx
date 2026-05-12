@@ -3,6 +3,7 @@ import DetailPost from "../components/DetailPost";
 import { useDetailPostGet } from "../hooks/useDetailPostGet";
 import Comments from "../components/Comments";
 import { useGetComments } from "../hooks/useGetComments";
+import { useDeletePost } from "../hooks/useDeletePost";
 
 export default function DetailPostPage() {
 
@@ -15,6 +16,11 @@ export default function DetailPostPage() {
     const detailPostData = useDetailPostGet(id);
     const commentData = useGetComments(id);
 
+    const deletePostData = useDeletePost();
+
+    const handleDeletePost = (id: string) => {
+        deletePostData.mutate(id)
+    }
     if (!detailPostData.data || !commentData.data) {
         return <div>로딩 중...</div>
     }
@@ -22,7 +28,7 @@ export default function DetailPostPage() {
     return (
         <div className="detail-post-container">
             <div className="detail-post-card">
-                <DetailPost data={detailPostData.data} />
+                <DetailPost data={detailPostData.data} handleDeletePost={() => handleDeletePost(id)} />
                 <Comments data={commentData.data ?? []} />
             </div>
         </div>

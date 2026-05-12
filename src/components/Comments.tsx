@@ -20,11 +20,11 @@ export default function Comments({ data }: CommentsProps) {
                     <div className="comment-header">
                         <span className="nickname">
                             {comment.user?.nickname ?? "알 수 없음"}
-                            <button className="comment-delete-button">삭제</button>
-                            <button className="comment-update-button">수정</button>
                         </span>
                         <span className="date">
                             {dayjs(comment.createdAt).format("YYYY-MM-DD HH:mm")}
+                            <button className="comment-update-button">수정</button>
+                            <button className="comment-delete-button">삭제</button>
                         </span>
                     </div>
                     <div className="content">

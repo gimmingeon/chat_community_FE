@@ -6,7 +6,7 @@ export default function CreatePostPage() {
     const [inputPostText, setInputPostText] = useState({
         title: "",
         content: "",
-        postType: "",
+        postType: "nomal",
         hashTag: [] as string[]
     });
 
