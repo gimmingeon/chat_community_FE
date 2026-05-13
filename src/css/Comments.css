@@ -72,3 +72,56 @@
     transition: all 0.2s;
     margin-left: 10px;
 }
+
+.comments-content-input {
+    width: 100%;
+    min-height: 100px;
+
+    padding: 12px;
+
+    border: 1px solid #ccc;
+    border-radius: 8px;
+
+    font-size: 14px;
+    line-height: 1.5;
+
+    resize: none;
+    outline: none;
+
+    box-sizing: border-box;
+
+    margin-bottom: 12px;
+
+}
+
+.comments-content-input:focus {
+    border-color: #4f46e5;
+}
+
+.comments-register-button {
+    padding: 10px 16px;
+
+    border: none;
+    border-radius: 8px;
+
+    background-color: #4f46e5;
+    color: white;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.comments-register-button:hover {
+    opacity: 0.9;
+}
+
+.comments-empty {
+    margin-top: 20px;
+
+    color: #666;
+    font-size: 14px;
+}
