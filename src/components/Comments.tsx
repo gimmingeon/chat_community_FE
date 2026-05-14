@@ -2,6 +2,7 @@ import dayjs from "dayjs"
 import type { CommentsType } from "../type/CommentsType"
 import "../css/Comments.css"
 import { useCreateComment } from "../hooks/useCreateComment"
+import { useDeleteComment } from "../hooks/useDeleteComment"
 
 interface CommentsProps {
     data: CommentsType[],
@@ -23,6 +24,12 @@ export default function Comments({ data, id, content, setContent }: CommentsProp
                 }
             }
         )
+    }
+
+    const deleteComment = useDeleteComment();
+
+    const handleDeleteComment = (commentId: string, postId: string) => {
+        deleteComment.mutate({ commentId, postId });
     }
 
     if (!data || data.length === 0) {
@@ -76,7 +83,10 @@ export default function Comments({ data, id, content, setContent }: CommentsProp
                         <span className="date">
                             {dayjs(comment.createdAt).format("YYYY-MM-DD HH:mm")}
                             <button className="comment-update-button">수정</button>
-                            <button className="comment-delete-button">삭제</button>
+                            <button
+                                className="comment-delete-button"
+                                onClick={() => handleDeleteComment(String(comment.id), id)}
+                            >삭제</button>
                         </span>
                     </div>
                     <div className="content">
