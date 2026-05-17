@@ -5,6 +5,7 @@ import LoginPage from "./pages/LoginPage"
 import DetailPostPage from "./pages/DetailPostPage"
 import SignUpPage from "./pages/SignUpPage"
 import CreatePostPage from "./pages/CreatePostPage"
+import MyPage from "./pages/MyPage"
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
         <Route path="/post/:id" element={<DetailPostPage />} />
         <Route path="/signup" element={<SignUpPage />}></Route>
         <Route path="/createpost" element={<CreatePostPage />}></Route>
+        <Route path="/mypage" element={<MyPage />}></Route>
       </Routes>
     </div>
   )

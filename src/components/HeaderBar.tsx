@@ -30,7 +30,7 @@ export default function HeaderBar() {
                         {
                             isLogin ? (
                                 <Nav>
-                                    <Nav.Link href="/my">마이페이지</Nav.Link>
+                                    <Nav.Link href="/mypage">마이페이지</Nav.Link>
                                     <Nav.Link onClick={() => logout()}>로그아웃</Nav.Link>
                                 </Nav>
 
