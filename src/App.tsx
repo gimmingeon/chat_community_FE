@@ -6,6 +6,7 @@ import DetailPostPage from "./pages/DetailPostPage"
 import SignUpPage from "./pages/SignUpPage"
 import CreatePostPage from "./pages/CreatePostPage"
 import MyPage from "./pages/MyPage"
+import ChatPage from "./pages/ChatPage"
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
         <Route path="/signup" element={<SignUpPage />}></Route>
         <Route path="/createpost" element={<CreatePostPage />}></Route>
         <Route path="/mypage" element={<MyPage />}></Route>
+        <Route path="/chat" element={<ChatPage />}></Route>
       </Routes>
     </div>
   )
