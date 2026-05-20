@@ -22,7 +22,7 @@ function App() {
         <Route path="/signup" element={<SignUpPage />}></Route>
         <Route path="/createpost" element={<CreatePostPage />}></Route>
         <Route path="/mypage" element={<MyPage />}></Route>
-        <Route path="/chat" element={<ChatPage />}></Route>
+        <Route path="/chat/:id" element={<ChatPage />}></Route>
       </Routes>
     </div>
   )

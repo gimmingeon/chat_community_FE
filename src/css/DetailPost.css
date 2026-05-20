@@ -70,3 +70,14 @@
     font-size: 14px;
     transition: all 0.2s;
 }
+
+.post-chatting-button {
+    color: black;
+    padding: 4px 8px;
+    border: 1px solid black;
+    background: yellow;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: all 0.2s;
+}

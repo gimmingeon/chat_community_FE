@@ -2,13 +2,15 @@ import dayjs from "dayjs"
 import type { DetailPost } from "../type/DetailPostType"
 import "../css/DetailPost.css"
 import { PostTypeLabel } from "../type/PostTypeLabel"
+import { useNavigate } from "react-router-dom"
 
 interface DetailPostProps {
     data: DetailPost,
-    handleDeletePost: () => void
+    handleDeletePost: () => void,
+    handleChattingRoom: (postId: number, postUserId: number) => void,
 }
 
-export default function DetailPost({ data, handleDeletePost }: DetailPostProps) {
+export default function DetailPost({ data, handleDeletePost, handleChattingRoom }: DetailPostProps) {
 
     return (
         <div className="detail-post-container">
@@ -24,6 +26,11 @@ export default function DetailPost({ data, handleDeletePost }: DetailPostProps) 
                     {data.updatedAt !== data.createdAt && (
                         <span>수정일: {dayjs(data.updatedAt).format("YYYY-MM-DD HH:mm")}</span>
                     )}
+
+                    <button
+                        className="post-chatting-button"
+                        onClick={() => handleChattingRoom(data.id, data.user.id)}
+                    >채팅</button>
 
                     <button className="post-update-button">게시글 수정</button>
                     <button
