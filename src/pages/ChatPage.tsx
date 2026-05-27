@@ -1,8 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
-import { io } from "socket.io-client";
-
-const socket = io("http://localhost:3000");
+import { io, Socket } from "socket.io-client";
 
 export default function ChatPage() {
 
@@ -11,24 +9,39 @@ export default function ChatPage() {
     const [message, setMessage] = useState("");
     const [messages, setMessages] = useState<string[]>([]);
 
+    const socketRef = useRef<Socket | null>(null);
+
     useEffect(() => {
+
+        socketRef.current = io(
+            "http://localhost:3000",
+            {
+                // 서버로 쿠키보냄
+                withCredentials: true
+            }
+        );
+
+        const socket = socketRef.current;
 
         const handleMessage = (data: string) => {
             setMessages((prev) => [...prev, data]);
-        }
+        };
 
+        // 채팅룸 접속
         socket.emit("joinRoom", Number(id));
         // 메시지 가져오기
         socket.on("message", handleMessage);
 
         return () => {
             socket.off("message", handleMessage);
+
+            socket.disconnect();
         };
     }, [id]);
 
     // 메세지 보내기
     const sendMessage = () => {
-        socket.emit("message", { roomId: Number(id), message });
+        socketRef.current?.emit("message", { roomId: Number(id), message });
         setMessage("");
     };
 
