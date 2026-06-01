@@ -30,10 +30,11 @@ export default function ChatPage() {
         // 채팅룸 접속
         socket.emit("joinRoom", Number(id));
         // 메시지 가져오기
-        socket.on("message", handleMessage);
+        // user-message에서 가져온 데이터로 handleMessage를 실행
+        socket.on("user-message", handleMessage);
 
         return () => {
-            socket.off("message", handleMessage);
+            socket.off("user-message", handleMessage);
 
             socket.disconnect();
         };
