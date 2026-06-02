@@ -1,13 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { io, Socket } from "socket.io-client";
+import type { LoadMessageType } from "../type/LoadMessageType";
+import dayjs from "dayjs";
 
 export default function ChatPage() {
 
     let { id } = useParams();
 
     const [message, setMessage] = useState("");
-    const [messages, setMessages] = useState<string[]>([]);
+    const [messages, setMessages] = useState<LoadMessageType[]>([]);
 
     const socketRef = useRef<Socket | null>(null);
 
@@ -23,17 +25,30 @@ export default function ChatPage() {
 
         const socket = socketRef.current;
 
-        const handleMessage = (data: string) => {
+        const handleMessage = (data: LoadMessageType) => {
             setMessages((prev) => [...prev, data]);
         };
 
+        const handleLoadMessage = (data: LoadMessageType[]) => {
+            setMessages(data);
+        }
+
         // 채팅룸 접속
         socket.emit("joinRoom", Number(id));
+
+        socket.emit("loadMessage", Number(id));
+
+        socket.on("load-message", handleLoadMessage);
+
         // 메시지 가져오기
         // user-message에서 가져온 데이터로 handleMessage를 실행
+        // 처음에는 emit을 실행되지 않기에 이벤트 수신 대기 등록 상태이다
+        // 지금 당장 받는게 아님 
+        // emit으로 전송될때마다 받고 다시 대기중을 반복함
         socket.on("user-message", handleMessage);
 
         return () => {
+            socket.off("loadMessage", handleLoadMessage);
             socket.off("user-message", handleMessage);
 
             socket.disconnect();
@@ -52,7 +67,9 @@ export default function ChatPage() {
             <div>
                 {messages.map((message, index) => (
                     <div key={index}>
-                        {message}
+                        {message.user.nickname}
+                        {message.content}
+                        {dayjs(message.createdAt).format("HH:mm")}
                     </div>
                 ))}
             </div>

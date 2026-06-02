@@ -2,7 +2,6 @@ import dayjs from "dayjs"
 import type { DetailPost } from "../type/DetailPostType"
 import "../css/DetailPost.css"
 import { PostTypeLabel } from "../type/PostTypeLabel"
-import { useNavigate } from "react-router-dom"
 
 interface DetailPostProps {
     data: DetailPost,

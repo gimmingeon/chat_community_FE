@@ -31,7 +31,6 @@ export default function DetailPostPage() {
 
     const handleChattingRoom = async (postId: number, postUserId: number) => {
         const chatRoomId = await chattingRoomHook.mutateAsync({ postId, postUserId });
-
         navigate(`/chat/${chatRoomId}`);
     }
 
@@ -52,6 +51,10 @@ export default function DetailPostPage() {
                     id={id}
                     content={content}
                     setContent={setContent}
+                    handleChattingRoom={handleChattingRoom}
+                    postId={detailPostData.data.id}
+                    postTitle={detailPostData.data.title}
+                    postUserId={detailPostData.data.user.id}
                 />
             </div>
         </div>
