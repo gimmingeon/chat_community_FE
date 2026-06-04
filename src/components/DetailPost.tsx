@@ -2,14 +2,21 @@ import dayjs from "dayjs"
 import type { DetailPost } from "../type/DetailPostType"
 import "../css/DetailPost.css"
 import { PostTypeLabel } from "../type/PostTypeLabel"
+import type { ChattingRoomType } from "../type/ChattingListType"
+import ChatModal from "./chatListModal"
 
 interface DetailPostProps {
     data: DetailPost,
     handleDeletePost: () => void,
     handleChattingRoom: (postId: number, postUserId: number) => void,
+    chatModalOpen: boolean,
+    setChatModalOpen: React.Dispatch<React.SetStateAction<boolean>>,
+    chattingList: ChattingRoomType[]
 }
 
-export default function DetailPost({ data, handleDeletePost, handleChattingRoom }: DetailPostProps) {
+export default function DetailPost({ data, handleDeletePost, handleChattingRoom
+    , chatModalOpen, setChatModalOpen, chattingList
+}: DetailPostProps) {
 
     return (
         <div className="detail-post-container">
@@ -56,6 +63,14 @@ export default function DetailPost({ data, handleDeletePost, handleChattingRoom 
                 <hr />
 
             </div>
+
+
+            {chatModalOpen && (
+                <ChatModal
+                    onClose={() => setChatModalOpen(false)}
+                    chattingList={chattingList}
+                />
+            )}
         </div>
     )
 }

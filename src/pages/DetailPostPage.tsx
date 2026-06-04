@@ -6,6 +6,7 @@ import { useGetComments } from "../hooks/useGetComments";
 import { useDeletePost } from "../hooks/useDeletePost";
 import { useState } from "react";
 import { useCreateChatRoom } from "../hooks/useCreateChatRoom";
+import type { ChattingRoomType } from "../type/ChattingListType";
 
 export default function DetailPostPage() {
 
@@ -14,6 +15,9 @@ export default function DetailPostPage() {
     let { id } = useParams();
 
     const [content, setContent] = useState("");
+    const [chattingList, setChattingList] = useState<ChattingRoomType[]>([]);
+
+    const [chatModalOpen, setChatModalOpen] = useState(false);
 
     if (!id) {
         return <div>잘못된 접근입니다</div>;
@@ -31,7 +35,13 @@ export default function DetailPostPage() {
 
     const handleChattingRoom = async (postId: number, postUserId: number) => {
         const chatRoomId = await chattingRoomHook.mutateAsync({ postId, postUserId });
-        navigate(`/chat/${chatRoomId}`);
+
+        if (Array.isArray(chatRoomId)) {
+            setChattingList(chatRoomId);
+            setChatModalOpen(true);
+        } else {
+            navigate(`/chat/${chatRoomId}`);
+        }
     }
 
     if (!detailPostData.data || !commentData.data) {
@@ -45,6 +55,9 @@ export default function DetailPostPage() {
                     data={detailPostData.data}
                     handleDeletePost={() => handleDeletePost(id)}
                     handleChattingRoom={handleChattingRoom}
+                    chatModalOpen={chatModalOpen}
+                    setChatModalOpen={setChatModalOpen}
+                    chattingList={chattingList}
                 />
                 <Comments
                     data={commentData.data ?? []}
