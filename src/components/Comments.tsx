@@ -9,15 +9,15 @@ interface CommentsProps {
     id: string,
     content: string,
     setContent: React.Dispatch<React.SetStateAction<string>>,
-    handleChattingRoom: (postId: number, postUserId: number) => void,
-    postId: number,
-    postTitle: string,
-    postUserId: number
+    // handleChattingRoom: (postId: number, postUserId: number) => void,
+    // postId: number,
+    // postTitle: string,
+    // postUserId: number
 }
 
 export default function Comments({
     data, id, content, setContent,
-    handleChattingRoom, postId, postTitle, postUserId
+    // handleChattingRoom, postId, postTitle, postUserId
 }: CommentsProps) {
 
     const createComment = useCreateComment();
@@ -90,10 +90,10 @@ export default function Comments({
                         <span className="date">
                             {dayjs(comment.createdAt).format("YYYY-MM-DD HH:mm")}
 
-                            <button
+                            {/* <button
                                 className="post-chatting-button"
                                 onClick={() => handleChattingRoom(postId, postUserId)}
-                            >채팅</button>
+                            >채팅</button> */}
                             <button className="comment-update-button">수정</button>
                             <button
                                 className="comment-delete-button"
