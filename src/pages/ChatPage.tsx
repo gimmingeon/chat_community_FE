@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { io, Socket } from "socket.io-client";
 import type { LoadMessageType } from "../type/LoadMessageType";
 import dayjs from "dayjs";
+import "../css/Chat.css"
 
 export default function ChatPage() {
 
@@ -10,6 +11,8 @@ export default function ChatPage() {
 
     const [message, setMessage] = useState("");
     const [messages, setMessages] = useState<LoadMessageType[]>([]);
+    const [postTitle, setPostTitle] = useState("");
+    const [myId, setMyId] = useState<number | null>(null);
 
     const socketRef = useRef<Socket | null>(null);
 
@@ -33,10 +36,19 @@ export default function ChatPage() {
             setMessages(data);
         }
 
+        const handleGetTitle = (data: { title: string, userId: number }) => {
+            setPostTitle(data.title);
+            setMyId(data.userId);
+        }
+
         // 채팅룸 접속
         socket.emit("joinRoom", Number(id));
 
+        socket.emit("postTitle", Number(id));
+
         socket.emit("loadMessage", Number(id));
+
+        socket.on("get-postTitle", handleGetTitle);
 
         socket.on("load-message", handleLoadMessage);
 
@@ -62,24 +74,51 @@ export default function ChatPage() {
     };
 
     return (
-        <div>
-            <h1>채팅</h1>
-            <div>
-                {messages.map((message, index) => (
-                    <div key={index}>
-                        {message.user.nickname}
-                        {message.content}
-                        {dayjs(message.createdAt).format("HH:mm")}
-                    </div>
-                ))}
+        <div className="chat-container">
+            <h1 className="chat-title">게시글: {postTitle}</h1>
+
+            <div className="chat-message-list">
+                {messages.map((message, index) => {
+
+                    const myChat = message.user.id === myId;
+
+                    return (
+
+                        <div
+                            key={index}
+                            className={myChat ? "chat-message-row mine" : "chat-message-row other"}
+                        >
+                            <div
+                                key={index}
+                                className="chat-message-item"
+                            >
+                                <div className="chat-message-header">
+                                    <span className="chat-nickname">
+                                        {message.user.nickname}
+                                    </span>
+                                    <span className="chat-time">
+                                        {dayjs(message.createdAt).format("HH:mm")}
+                                    </span>
+                                </div>
+
+                                <div className="chat-content">
+                                    {message.content}
+                                </div>
+                            </div>
+                        </div>
+                    )
+                })}
             </div>
 
-            <input
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-            />
+            <div className="chat-input-area">
+                <input
+                    className="chat-input"
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                />
 
-            <button onClick={sendMessage}>전송</button>
+                <button className="chat-send-button" onClick={sendMessage}>전송</button>
+            </div>
         </div>
     )
 }
