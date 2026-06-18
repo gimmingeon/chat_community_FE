@@ -1,0 +1,5 @@
+node_modules
+.gitignore
+
+# 아직은 없지만 혹시 모르니 추가
+.dist
